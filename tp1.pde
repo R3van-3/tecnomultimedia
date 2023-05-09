@@ -9,7 +9,7 @@ int tiempoEntreCambios = 4000;
 float textoPosY;
 float textoPosY2;
 float textoPosY3;
-float velocidadTexto = 1.5 ;
+float velocidadTexto = 0.9 ;
 
 int botonX = 550;
 int botonY = 430;
