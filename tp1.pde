@@ -9,7 +9,7 @@ int tiempoEntreCambios = 4000;
 float textoPosY;
 float textoPosY2;
 float textoPosY3;
-float velocidadTexto = 0.9 ;
+float velocidadTexto = 1.5 ;
 
 int botonX = 550;
 int botonY = 430;
@@ -57,6 +57,7 @@ void draw() {
       textoPosY3 += velocidadTexto;
     }
     text("Con el último vuelo del Atlantis se cierra la era de los Transbordadores Espaciales después de 30 años.", 20, textoPosY3, 600, 440);
+    image(miBoton, botonX, botonY, botonAncho, botonAlto);
     seguirCambiando = false;
   }
 
@@ -69,8 +70,6 @@ void draw() {
   if (textoPosY3 > height) {
     textoPosY3 = -50;
   }
-
-  image(miBoton, botonX, botonY, botonAncho, botonAlto);
   
   if (seguirCambiando && millis() - tiempoUltimoCambio > tiempoEntreCambios) {
     if (imagenActual == 1) {
@@ -80,21 +79,21 @@ void draw() {
       imagenActual = 3;
       textoPosY2 = -100;
       } else if (imagenActual == 3) {
-  imagenActual = 1;
-  textoPosY3 = -100;
-}
-tiempoUltimoCambio = millis();
-}
+      imagenActual = 1;
+      textoPosY3 = -100;
+    }
+    tiempoUltimoCambio = millis();
+  }
 }
 
 void mouseClicked() {
-if (mouseX > botonX && mouseX < botonX + botonAncho && mouseY > botonY && mouseY < botonY + botonAlto) {
-imagenActual = 1;
-seguirCambiando = true;
-tiempoUltimoCambio = millis();
-// reiniciar las posiciones de texto
-textoPosY = -100;
-textoPosY2 = -100;
-textoPosY3 = -100;
-}
+  if (imagenActual == 3 && mouseX > botonX && mouseX < botonX + botonAncho && mouseY > botonY && mouseY < botonY + botonAlto) {
+    imagenActual = 1;
+    seguirCambiando = true;
+    tiempoUltimoCambio = millis();
+    // reiniciar las posiciones de texto
+    textoPosY = -100;
+    textoPosY2 = -100;
+    textoPosY3 = -100;
+  }
 }
